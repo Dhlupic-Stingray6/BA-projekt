@@ -50,6 +50,16 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
         return hasRole(ADMIN_ROLE, account);
     }
 
+    
+    // pause (emergency stop)
+     function pauziraj() public onlyRole(ADMIN_ROLE) {
+        _pause();
+    }
+
+    function odpauziraj() public onlyRole(ADMIN_ROLE) {
+        _unpause();
+    }
+
     // izdavanje cert
     function izdajCertifkat(
         address primatelj, 
