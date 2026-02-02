@@ -32,6 +32,34 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
         _grantRole(ISSUER_ROLE, msg.sender);
     }
 
+
+    function izdajCertifkat(
+        address primatelj, 
+        string memory nazivProizvoda, 
+        string memory proizvodac, 
+        string memory verzija, 
+        string memory kategorija, 
+        uint256 datumIsteka
+    ) public onlyRole(ISSUER_ROLE) whenNotPaused returns (uint256) {
+
+        uint256 tokenId = _tokenIdCounter;
+        _tokenIdCounter++;
+
+        _safeMint(primatelj, tokenId);
+
+        _certifikati[tokenId] = Certfikat({
+            nazivProizvoda: nazivProizvoda, 
+            proizvodac: proizvodac,
+            verzija: verzija, 
+            kategorija: kategorija,
+            datumIzdavanja: block.timestamp,
+            datumIsteka: datumIsteka, 
+            aktivan: true
+        });
+
+        return tokenId;
+    }
+
     function supportsInterface(bytes4 interfaceId)
         public 
         view
