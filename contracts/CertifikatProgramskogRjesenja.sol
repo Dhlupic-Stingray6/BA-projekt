@@ -32,7 +32,25 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
         _grantRole(ISSUER_ROLE, msg.sender);
     }
 
+    // role managment 
 
+    function addIssuer(address account) public onlyRole(ADMIN_ROLE) {
+        _grantRole(ISSUER_ROLE, account);
+    }
+
+    function removeIssuer(address account) public onlyRole(ADMIN_ROLE) {
+        _revokeRole(ISSUER_ROLE, account);
+    }
+
+    function isIssuer(address account) public view returns (bool) {
+        return hasRole(ISSUER_ROLE, account);
+    }
+
+    function isAdmin(address account) public view returns (bool) {
+        return hasRole(ADMIN_ROLE, account);
+    }
+
+    // izdavanje cert
     function izdajCertifkat(
         address primatelj, 
         string memory nazivProizvoda, 
