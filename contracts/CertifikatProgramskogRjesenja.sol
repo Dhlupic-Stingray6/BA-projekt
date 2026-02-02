@@ -13,6 +13,20 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
 
     uint256 private _tokenIdCounter;
 
+    //struktura
+
+    struct Certfikat {
+        string nazivProizvoda;
+        string proizvodac;
+        string verzija;
+        string kategorija;
+        uint256 datumIzdavanja;
+        uint256 datumIsteka;
+        bool aktivan;
+    }
+
+    mapping(uint256 => Certfikat) private _certifikati;
+
     constructor() ERC721("Certifikat Programskog Rjesenja", "CPR" ) {
         _grantRole(ADMIN_ROLE, msg.sender);
         _grantRole(ISSUER_ROLE, msg.sender);
