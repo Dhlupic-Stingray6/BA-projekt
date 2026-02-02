@@ -78,6 +78,35 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
         return tokenId;
     }
 
+    function dohvatiCertifikat(uint256 tokenId) public view returns (Certfikat memory) {
+        require(_ownerOf(tokenId) != address(0), "Certifikat ne postoji");
+        return _certifikati[tokenId];
+    }
+
+    function provjeriValjanost(uint256 tokenId) public view returns (bool) {
+        require(_ownerOf(tokenId) != address(0), "Certifikat ne postoji");
+        
+        Certfikat memory cert = _certifikati[tokenId];
+        
+        // is active
+        if (!cert.aktivan) {
+            return false;
+        }
+        
+        
+        if (cert.datumIsteka != 0 && block.timestamp > cert.datumIsteka) {
+            return false;
+        }
+        
+        return true;
+    }
+
+    function dohvatiBrojCertifikata() public view returns (uint256) {
+        return _tokenIdCounter;
+    }
+
+
+
     function supportsInterface(bytes4 interfaceId)
         public 
         view
