@@ -27,6 +27,19 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
 
     mapping(uint256 => Certfikat) private _certifikati;
 
+    // eventi
+
+    event CertfikatOpozvan(uint256 indexed tokenId, address indexed opozovi);
+
+    event CertifikatReaktiviran(uint256 indexed tokenId, address indexed reaktiviraj);
+
+    event dobavljacDodan(uint256 indexed account, address indexed dodan);
+
+    event dobavljacUklonjen(uint256 indexed account, address indexed uklonjen); 
+
+
+
+
     constructor() ERC721("Certifikat Programskog Rjesenja", "CPR" ) {
         _grantRole(ADMIN_ROLE, msg.sender);
         _grantRole(ISSUER_ROLE, msg.sender);
