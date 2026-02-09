@@ -13,6 +13,10 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
 
     uint256 private _tokenIdCounter;
 
+    // base URI 
+
+    string private _baseTokenURI;
+
     //struktura
 
     struct Certfikat {
@@ -23,6 +27,7 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
         uint256 datumIzdavanja;
         uint256 datumIsteka;
         bool aktivan;
+        string metadataURI;
     }
 
     mapping(uint256 => Certfikat) private _certifikati;
@@ -33,11 +38,11 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
 
     event CertifikatReaktiviran(uint256 indexed tokenId, address indexed reaktiviraj);
 
-    event dobavljacDodan(uint256 indexed account, address indexed dodan);
+    event DobavljacDodan(uint256 indexed account, address indexed dodan);
 
-    event dobavljacUklonjen(uint256 indexed account, address indexed uklonjen); 
+    event DobavljacUklonjen(uint256 indexed account, address indexed uklonjen); 
 
-
+    event BaseURIPromjenjen(string noviURI);
 
 
     constructor() ERC721("Certifikat Programskog Rjesenja", "CPR" ) {
@@ -73,6 +78,31 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
         _unpause();
     }
 
+
+    // metadata IPFS
+
+    function postaviBaseURI(string memory noviBaseURI) public onlyRole(ADMIN_ROLE) {
+        _baseTokenURI = noviBaseURI;
+        emit BaseURIPromjenjen(noviBaseURI);
+    }
+
+    function _baseURI() internal view override returns (string memory) {
+        return _baseTokenURI;
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        require(_ownerOf(tokenId) != address(0), "Certifikat ne postoji");
+
+        string memory certMetaDataURI = _certifikati[tokenId].metadataURI;
+
+        if (bytes(certMetaDataURI).length > 0) {
+            return certMetaDataURI;
+        }
+
+
+        return super.tokenURI(tokenId);
+
+    }
     // izdavanje cert
     function izdajCertifkat(
         address primatelj, 
@@ -80,7 +110,8 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
         string memory proizvodac, 
         string memory verzija, 
         string memory kategorija, 
-        uint256 datumIsteka
+        uint256 datumIsteka,
+        string memory metadataURI
     ) public onlyRole(ISSUER_ROLE) whenNotPaused returns (uint256) {
 
         uint256 tokenId = _tokenIdCounter;
@@ -95,7 +126,8 @@ contract CertifikatProgramskogRjesenja is ERC721, AccessControl, Pausable {
             kategorija: kategorija,
             datumIzdavanja: block.timestamp,
             datumIsteka: datumIsteka, 
-            aktivan: true
+            aktivan: true,
+            metadataURI: metadataURI
         });
 
         return tokenId;
