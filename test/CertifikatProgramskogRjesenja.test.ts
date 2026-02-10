@@ -34,7 +34,7 @@ describe("CertifikatProgramskogRjesenja", async function () {
 
         console.log("Eventi u ugovoru:", eventNames);
         
-        // Provjeri bar osnovne evente iz ERC721 i AccessControl
+        // Provjera eventa iz ERC721 i AccessControl
         assert.ok(eventNames.includes("Transfer"), "Transfer event postoji");
         assert.ok(eventNames.includes("Approval"), "Approval event postoji");
     });

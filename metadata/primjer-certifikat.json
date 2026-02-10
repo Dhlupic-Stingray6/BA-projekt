@@ -1,0 +1,33 @@
+{
+    "name": "Certifikat - ERP Sustav v2.0",
+    "description": "Certifikat za verificirani programski proizvod izdan od nadležnog državnog tijela",
+    "image": "ipfs://QmPrimjerHash.../certifikat-logo.png",
+    "external_url": "https://example.com/certifikati/0",
+    "attributes": [
+        {
+            "trait_type": "Naziv proizvoda",
+            "value": "ERP Sustav"
+        },
+        {
+            "trait_type": "Proizvođač",
+            "value": "TechCorp d.o.o."
+        },
+        {
+            "trait_type": "Verzija",
+            "value": "2.0"
+        },
+        {
+            "trait_type": "Kategorija",
+            "value": "Sigurnost"
+        },
+        {
+            "trait_type": "Datum izdavanja",
+            "display_type": "date",
+            "value": 1704067200
+        },
+        {
+            "trait_type": "Status",
+            "value": "Aktivan"
+        }
+    ]
+}
