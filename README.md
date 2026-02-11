@@ -1,14 +1,12 @@
 # Pametni ugovor za certifikaciju programskih rješenja
 
-NFT-based sustav za izdavanje i verifikaciju certifikata programskih proizvoda na Ethereum blockchainu.
-
 **Adresa ugovora** : 0x9D7804BA80D60CE7174E376057D5951B66542ae5
 
 ## Opis projekta
 
-Sustav omogućuje nadležnim državnim tijelima izdavanje digitalnih certifikata za verificirane programske proizvode. Certifikati su implementirani kao NFT tokeni (ERC-721) što osigurava nepromjenjivost, transparentnost i jednostavnu verifikaciju.
+Pametni ugovor za certifikaciju programskih rješenja je NFT-based sustav izgrađen na Ethereum blockchainu koji omogućuje izdavanje, upravljanje i verifikaciju digitalnih certifikata za programske proizvode.
 
-### Korisnici sustava
+### Korisnici 
 
 1. **Nadležno državno tijelo / uprava** — izdaje certifikate za programske proizvode koje prethodno certificira
 2. **Programske kuće / proizvođači rješenja** — zaprimaju certifikate kao dokaz kvalitete svojih proizvoda
