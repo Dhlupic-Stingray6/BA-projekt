@@ -4,7 +4,7 @@
 
 ## Opis projekta
 
-Pametni ugovor za certifikaciju programskih rješenja je NFT-based sustav izgrađen na Ethereum blockchainu koji omogućuje izdavanje, upravljanje i verifikaciju digitalnih certifikata za programske proizvode.
+Pametni ugovor za certifikaciju programskih rješenja baziran na NFT-u, koji je izgrađen na Ethereum blockchainu. Navedeni omogućuje izdavanje, upravljanje i verifikaciju digitalnih certifikata.
 
 ### Korisnici 
 
