@@ -2,6 +2,8 @@
 
 NFT-based sustav za izdavanje i verifikaciju certifikata programskih proizvoda na Ethereum blockchainu.
 
+**Adresa ugovora** : 0x9D7804BA80D60CE7174E376057D5951B66542ae5
+
 ## Opis projekta
 
 Sustav omogućuje nadležnim državnim tijelima izdavanje digitalnih certifikata za verificirane programske proizvode. Certifikati su implementirani kao NFT tokeni (ERC-721) što osigurava nepromjenjivost, transparentnost i jednostavnu verifikaciju.
